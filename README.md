@@ -57,22 +57,11 @@ cd ..
 catkin_make
 ```
 
-*. (Optional) RRT_Exploration Package - 
+* (Optional) [RRT_Exploration](https://github.com/hasauino/rrt_exploration) Package.
 
 ### Requirement:
 
 
-### Installation:
 
-installation of Intel realsense on Nvidia Jetson: * Jetson users - use the [Jetson Installation Guide](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_jetson.md)
-
-how to use/active
-
-panth planner and worlds
-
-```shell
-mkdir -p ~/catkin_ws/src
-cd ~/catkin_ws/src/
-git clone
 ```
 Common errors here : [COMMON ERRORS](https://github.com/edoardottt/READMENATOR/blob/master/COMMON_ERRORS.md)
