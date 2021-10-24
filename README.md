@@ -26,14 +26,17 @@ project description and creduts for using ready packages with links.
 sudo apt-get install ros-melodic-navigation
 ```
   For more information go to [ROS-Navigation](http://wiki.ros.org/navigation)
+
 3. Install Realsense Library for ROS.
   Installation of Intel realsense on Nvidia Jetson:[Jetson Installation Guide](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_jetson.md)
   For more information go to [RealSense](https://github.com/mahammadirfan/SLAM-using-intelrealsense-d435i)
+
 4. Install RTAB-Map:
 ```shell
 sudo apt install ros-melodic-rtabmap-ros
 ```
   For more information go to: [RTAB-Map-ROS](https://github.com/introlab/rtabmap_ros) 
+
 5. Install ROS's Gmapping Package:
 ```shell
 sudo apt-get install ros-melodic-gmapping
@@ -43,10 +46,12 @@ sudo apt-get install python-numpy
 sudo apt-get install python-scikits-learn
 ```
   For more Information go to [SLAM Gmapping](http://wiki.ros.org/slam_gmapping)
+
 6. Clone this repository:
 ```shell
 git clone https://github.com/Bengal1/AI-for-Robot.git
 ```
+
 *. (Optional) RRT_Exploration Package - 
 
 ### Requirement:
