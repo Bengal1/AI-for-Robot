@@ -1,0 +1,69 @@
+TrajectoryPlannerROS:
+  #Set the acceleration limits of the robot
+  acc_lim_th: 5.0
+  acc_lim_x: 4.0
+  acc_lim_y: 0.1
+
+  #Set the velocity limits of the robot
+  max_vel_x: 1.0
+  min_vel_x: -0.1
+  max_vel_theta: 1.5
+  min_vel_theta: -1.5
+  max_in_place_rotational_vel: 2.0
+  min_in_place_rotational_vel: -2.0
+  max_in_place_vel_theta: 2.0
+  min_in_place_vel_theta: -2.0
+
+  #The velocity the robot will command when trying to escape from a stuck situation
+  escape_vel: -0.2
+
+  #For this example, we'll use a holonomic robot
+  holonomic_robot: false
+
+  #Set the tolerance on achieving a goal
+  xy_goal_tolerance: 0.2
+  yaw_goal_tolerance: 0.2
+  latch_xy_goal_tolerance: false
+
+
+  recovery_behavior_enabled: false
+  clearing_rotation_allowed: false
+
+  sim_granularity: 0.3
+  angular_sim_granularity: 0.3
+  
+  # Trajectory Scoring Parameters
+  path_distance_bias: 4.0
+  goal_distance_bias: 20.0
+  occdist_scale: 0.02
+  forward_point_distance: 0.2
+  stop_time_buffer: 0.2
+  scaling_speed: 0.25
+  max_scaling_factor: 0.2
+  meter_scoring: true
+  
+#  occdist_scale: 1.0
+  #We'll configure how long and with what granularity we'll forward simulate trajectories
+#  sim_time: 1.5
+#  sim_granularity: 0.025
+#  angular_sim_granularity: 0.025
+#  vx_samples: 3
+#  vtheta_samples: 20
+#  controller_frequency: 1.0
+#  planner_frequency: 30.0
+
+  #Parameters for scoring trajectories
+#  goal_distance_bias: 0.8
+#  path_distance_bias: 1.0
+#  occdist_scale: 0.01
+#  heading_lookahead: 0.325
+
+  #We'll use the Dynamic Window Approach to control instead of Trajectory Rollout for this example
+  dwa: true
+
+  #How far the robot must travel before oscillation flags are reset
+#  oscillation_reset_dist: 0.05
+
+  #Eat up the plan as the robot moves along it
+#  prune_plan: false
+

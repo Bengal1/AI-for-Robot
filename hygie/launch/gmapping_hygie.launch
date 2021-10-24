@@ -1,0 +1,88 @@
+<!-- move base -->
+<launch>
+  <master auto="start"/>
+
+    <!-- depth cloud to laser scan -->
+    <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan" args="load depthimage_to_laserscan/DepthImageToLaserScanNodelet">
+        <remap from="image"       to="/camera/aligned_depth_to_color/image_raw"/>
+        <remap from="camera_info" to="/camera/depth/camera_info"/>
+        <remap from="scan"        to="/scan"/>
+        <param name="range_max" type="double" value="10.0"/>
+        <param name="output_frame_id" value="camera_depth_frame"/>
+    </node>
+
+    <!-- TF frame broadcast to fake laser-->
+    <node pkg="tf" type="static_transform_publisher" name="laser_link" args="0 0 0 0 0 0 odom camera_link 100"/>
+-->
+  <arg name="namespace"/>
+
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" >
+      <param name="map_frame" value="map"/>
+      <param name="odom_frame" value="odom"/>
+      <param name="base_frame" value="camera_link"/>
+      <param name="map_update_interval" value="1.0"/>
+      <param name="maxUrange" value="5.0"/>
+      <param name="maxRange" value="6.0"/>
+      <param name="sigma" value="0.05"/>
+      <param name="kernelSize" value="1"/>
+      <param name="lstep" value="0.05"/>
+      <param name="astep" value="0.5"/> <!--0.5-->
+      <param name="iterations" value="5"/>
+      <param name="lsigma" value="0.075"/>
+      <param name="ogain" value="3.0"/>
+      <param name="lskip" value="0"/>
+      <param name="srr" value="0.01"/>
+      <param name="srt" value="0.02"/>
+      <param name="str" value="0.01"/>
+      <param name="stt" value="0.02"/>
+      <param name="linearUpdate" value="1.0"/>
+      <param name="angularUpdate" value="0.5"/>
+      <param name="temporalUpdate" value="0.1"/>
+      <param name="resampleThreshold" value="0.4"/>
+      <param name="particles" value="50"/>  <!-- change -->
+      <param name="xmin" value="-50.0"/>
+      <param name="ymin" value="-50.0"/>
+      <param name="xmax" value="50.0"/>
+      <param name="ymax" value="50.0"/>
+      <param name="delta" value="0.05"/>
+      <param name="llsamplerange" value="0.01"/>
+      <param name="llsamplestep" value="0.01"/>
+      <param name="lasamplerange" value="0.005"/>
+      <param name="lasamplestep" value="0.005"/>
+      <param name="minimumScore" value="1.0"/>
+      <remap from="/map" to="/rtabmap/grid_map"/>
+    </node>
+
+    <node pkg="laser_scan_matcher" type="laser_scan_matcher_node" name="laser_scan_matcher_node" output="screen">
+        <param name="use_odom" value="false"/>
+        <param name="use_cloud_input" value="true"/>
+        <param name="max_iteration" value="20"/>
+    </node>
+
+    <!-- Launch robot_localization node - unscented kalman filter-
+    <include file="$(find robot_localization)/launch/ukf_template.launch"/>
+    <param name="/ukf_se/frequency" value="300"/>
+    <param name="/ukf_se/base_link_frame" value="camera_link"/>
+    <param name="/ukf_se/odom0" value="rtabmap/odom"/>
+    <rosparam param="/ukf_se/odom0_config">[true,true,true,
+                                            true,true,true,
+                                            true,true,true,
+                                            true,true,true,
+                                            true,true,true]
+    </rosparam>
+    <param name="/ukf_se/odom0_relative" value="true"/>
+    <param name="/ukf_se/odom0_pose_rejection_threshold" value="10000000"/>
+    <param name="/ukf_se/odom0_twist_rejection_threshold" value="10000000"/>
+
+    <param name="/ukf_se/imu0" value="/imu/data"/>
+    <rosparam param="/ukf_se/imu0_config">[false, false, false,
+                                           true,  true,  true,
+                                           false,  false,  false,
+                                           true,  true,  true,
+                                           true,  true,  true]
+    </rosparam>
+    <param name="/ukf_se/imu0_differential" value="false"/>
+    <param name="/ukf_se/imu0_relative" value="false"/>
+    <param name="/ukf_se/use_control" value="false"/> -->
+
+</launch>

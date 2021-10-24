@@ -1,0 +1,945 @@
+<?xml version="1.0"?>
+<robot name="purebot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:property name="PI" value="3.1415926535897931" />
+
+    <xacro:property name="wheel_radius" value="0.050" />
+    <xacro:property name="wheel_width" value="0.0505" />
+
+    <link name="base_footprint"></link>  
+
+    <joint name="base_link_joint" type="fixed">
+        <origin xyz="0 0 0.05" rpy="0 0 0" />
+        <parent link="base_footprint"/>
+        <child link="base_link" />
+    </joint>
+
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://purebot/meshes/nexus_base_link.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+        <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://purebot/meshes/nexus_base_link_collision.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-0.01103 0 0.002" rpy="0 0 0"/>
+            <mass value="2.844"/>
+            <inertia
+              ixx="0.018819942" ixy="0" ixz="-0.000101519"
+              iyy="0.057333716" iyz="0"
+              izz="0.074201740"/>
+        </inertial>
+    </link>
+
+    <joint name='base_pole_joint' type='fixed'>
+        <parent link="base_link"/>
+        <child link="pole_link"/>
+        <origin xyz="0 0 0.5" rpy=" 0 0 0"/>
+    </joint>
+
+    <link name='pole_link'>
+        <inertial>
+            <mass value="0.00274875"/>
+            <inertia
+              ixx="0.0002297" ixy="0" ixz="0"
+              iyy="0.00022968" iyz="0"
+              izz="1.26e-06"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </inertial>
+        <visual name='visual'>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.052 0.052 1"/>
+            </geometry>
+        </visual>
+        <collision name='collision'>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.052 0.052 1"/>
+            </geometry>
+        </collision>
+    </link>
+    
+    <joint name='pole_arms_joint' type='prismatic'>
+        <parent link="pole_link"/>
+        <child link="arms_link"/>
+        <origin xyz="0 0 0" rpy=" 0 0 0"/>
+        <limit lower="-0.2" upper="0.5" effort="1" velocity="0.5"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    
+    <link name='arms_link'>
+        <inertial>
+            <mass value="0.478612"/>
+            <inertia
+              ixx="0.0490204" ixy="0" ixz="0"
+              iyy="0.0490204" iyz="0"
+              izz="0.0797687"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </inertial>
+        <visual name='visual'>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.504 0.05"/>
+            </geometry>
+        </visual>
+        <collision name='collision'>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.504 0.05"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="upper_left_wheel_shaft_joint" type="fixed">
+        <origin xyz="0.150 0.108 0.0" rpy="0 0 0" />
+        <parent link="base_link"/>
+        <child link="upper_left_wheel_shaft" />
+    </joint>
+
+    <link name="upper_left_wheel_shaft">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://purebot/meshes/wheel_shaft.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://purebot/meshes/wheel_shaft.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0.01221 0" rpy="0 0 0"/>
+            <mass value="0.055"/>
+            <inertia
+              ixx="0.000021370" ixy="0" ixz="0"
+              iyy="0.000009966" iyz="0"
+              izz="0.000021370"/>
+        </inertial>
+    </link>
+
+    <joint name="lower_left_wheel_shaft_joint" type="fixed">
+        <origin xyz="-0.150 0.108 0.0" rpy="0 0 0" />
+        <parent link="base_link"/>
+        <child link="lower_left_wheel_shaft" />
+    </joint>
+
+    <link name="lower_left_wheel_shaft">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://purebot/meshes/wheel_shaft.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://purebot/meshes/wheel_shaft.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0.01221 0" rpy="0 0 0"/>
+            <mass value="0.055"/>
+            <inertia
+              ixx="0.000021370" ixy="0" ixz="0"
+              iyy="0.000009966" iyz="0"
+              izz="0.000021370"/>
+        </inertial>
+    </link>
+
+    <joint name="upper_right_wheel_shaft_joint" type="fixed">
+        <origin xyz="0.150 -0.108 0.0" rpy="${PI} 0 0" />
+        <parent link="base_link"/>
+        <child link="upper_right_wheel_shaft" />
+    </joint>
+
+    <link name="upper_right_wheel_shaft">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://purebot/meshes/wheel_shaft.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://purebot/meshes/wheel_shaft.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0.01221 0" rpy="0 0 0"/>
+            <mass value="0.055"/>
+            <inertia
+              ixx="0.000021370" ixy="0" ixz="0"
+              iyy="0.000009966" iyz="0"
+              izz="0.000021370"/>
+        </inertial>
+    </link>
+
+    <joint name="lower_right_wheel_shaft_joint" type="fixed">
+        <origin xyz="-0.150 -0.108 0.0" rpy="${PI} 0 0" />
+        <parent link="base_link"/>
+        <child link="lower_right_wheel_shaft" />
+    </joint>
+
+    <link name="lower_right_wheel_shaft">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://purebot/meshes/wheel_shaft.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://purebot/meshes/wheel_shaft.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0.01221 0" rpy="0 0 0"/>
+            <mass value="0.055"/>
+            <inertia
+              ixx="0.000021370" ixy="0" ixz="0"
+              iyy="0.000009966" iyz="0"
+              izz="0.000021370"/>
+        </inertial>
+    </link>
+
+    <joint name="upper_left_wheel_joint" type="continuous">
+        <origin xyz="0 0.042 0" rpy="0 0 0" />
+        <parent link="upper_left_wheel_shaft"/>
+        <child link="upper_left_wheel" />
+        <axis xyz="0 1 0"/>
+    </joint>
+  
+    <link name="upper_left_wheel">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://purebot/meshes/mecanum_wheel_left.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+            <mass value="0.3844"/>
+      <!-- Inertia based on cylinder -->
+            <inertia
+              ixx="0.000324824" ixy="0" ixz="0"
+              iyy="0.000480000" iyz="0"
+              izz="0.000324824"/>
+        </inertial>
+    </link>
+
+    <joint name="lower_left_wheel_joint" type="continuous">
+        <origin xyz="0 0.042 0" rpy="0 0 0" />
+        <parent link="lower_left_wheel_shaft"/>
+        <child link="lower_left_wheel" />
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <link name="lower_left_wheel">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://purebot/meshes/mecanum_wheel_right.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+            <mass value="0.3844"/>
+      <!-- Inertia based on cylinder -->
+            <inertia
+              ixx="0.000324824" ixy="0" ixz="0"
+              iyy="0.000480000" iyz="0"
+              izz="0.000324824"/>
+        </inertial>
+    </link>
+
+    <joint name="upper_right_wheel_joint" type="continuous">
+        <origin xyz="0 0.042 0" rpy="0 0 0" />
+        <parent link="upper_right_wheel_shaft"/>
+        <child link="upper_right_wheel" />
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <link name="upper_right_wheel">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://purebot/meshes/mecanum_wheel_right.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+            <mass value="0.3844"/>
+      <!-- Inertia based on cylinder -->
+            <inertia
+              ixx="0.000324824" ixy="0" ixz="0"
+              iyy="0.000480000" iyz="0"
+              izz="0.000324824"/>
+        </inertial>
+    </link>
+  
+    <joint name="lower_right_wheel_joint" type="continuous">
+        <origin xyz="0 0.042 0" rpy="0 0 0" />
+        <parent link="lower_right_wheel_shaft"/>
+        <child link="lower_right_wheel" />
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <link name="lower_right_wheel">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://purebot/meshes/mecanum_wheel_left.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+            <mass value="0.3844"/>
+      <!-- Inertia based on cylinder -->
+            <inertia
+              ixx="0.000324824" ixy="0" ixz="0"
+              iyy="0.000480000" iyz="0"
+              izz="0.000324824"/>
+        </inertial>
+    </link>
+
+      <link name='ai_stand_top'>
+        <inertial>
+          <mass value="0.0767138"/>
+          <inertia
+            ixx="0.00643044" ixy="0" ixz="0"
+            iyy="0.00643044" iyz="0"
+            izz="0.0127856"/>
+        </inertial>
+        <pose frame=''>-0.425471 0.283636 0.37 0 -0 0</pose>
+
+        <visual name='visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box size="0.1 0.1 0.005"/>
+          </geometry>
+          <material>
+            <lighting>1</lighting>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+            <shader type='vertex'>
+              <normal_map>__default__</normal_map>
+            </shader>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+            <specular>0.01 0.01 0.01 1</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box size="0.1 0.1 0.005"/>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+      </link>
+      
+      <link name='link_0_0'>
+        <inertial>
+          <mass value="1"/>
+          <inertia
+            ixx="0.166667" ixy="0" ixz="0"
+            iyy="0.166667" iyz="0"
+            izz="0.166667"/>
+        </inertial>
+        <pose frame=''>-0.397001 0.283516 0.384691 1.57078 0 -1.57078</pose>
+        <gravity>1</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <enable_wind>0</enable_wind>
+        <visual name='visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>/home/bgl/catkin_ws/src/realsense-ros/realsense2_description/meshes/d435.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <lighting>1</lighting>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Black</name>
+            </script>
+            <shader type='vertex'>
+              <normal_map>__default__</normal_map>
+            </shader>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+          <transparency>0</transparency>
+          <cast_shadows>1</cast_shadows>
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>/home/bgl/catkin_ws/src/realsense-ros/realsense2_description/meshes/d435.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+      </link>
+      
+      <link name='link_0_clone'>
+        <inertial>
+          <mass value="0.0767138"/>
+          <inertia
+            ixx="0.00643044" ixy="0" ixz="0"
+            iyy="0.00643044" iyz="0"
+            izz="0.0127856"/>
+        </inertial>        <visual name='visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box size="0.1 0.1 0.005"/>
+          </geometry>
+          <material>
+            <lighting>1</lighting>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+            <shader type='vertex'>
+              <normal_map>__default__</normal_map>
+            </shader>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+            <specular>0.01 0.01 0.01 1</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box size="0.1 0.1 0.005"/>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+      </link>
+      
+      <link name='link_2'>
+        <inertial>
+          <mass value="0.001"/>
+          <inertia
+            ixx="1.141e-05" ixy="0" ixz="0"
+            iyy="1.141e-05" iyz="0"
+            izz="0"/>
+        </inertial>
+        <visual name='visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder radius="0.001" length="0.37"/>
+          </geometry>
+          <material>
+            <lighting>1</lighting>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+            <shader type='vertex'>
+              <normal_map>__default__</normal_map>
+            </shader>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+            <specular>0.01 0.01 0.01 1</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+          <transparency>0</transparency>
+          <cast_shadows>1</cast_shadows>
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder radius="0.001" length="0.37"/>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+      </link>
+      
+      <link name='link_2_clone'>
+        <inertial>
+          <inertial>
+          <mass value="0.001"/>
+          <inertia
+            ixx="1.141e-05" ixy="0" ixz="0"
+            iyy="1.141e-05" iyz="0"
+            izz="0"/>
+        </inertial>
+        <visual name='visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder radius="0.001" length="0.37"/>
+          </geometry>
+          <material>
+            <lighting>1</lighting>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+            <shader type='vertex'>
+              <normal_map>__default__</normal_map>
+            </shader>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+            <specular>0.01 0.01 0.01 1</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+          <transparency>0</transparency>
+          <cast_shadows>1</cast_shadows>
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder radius="0.001" length="0.37"/>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+      </link>
+      
+      <link name='link_2_clone_0'>
+        <inertial>
+          <mass value="0.001"/>
+          <inertia
+            ixx="1.141e-05" ixy="0" ixz="0"
+            iyy="1.141e-05" iyz="0"
+            izz="0"/>
+        </inertial>
+        <visual name='visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder radius="0.001" length="0.37"/>
+          </geometry>
+          <material>
+            <lighting>1</lighting>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+            <shader type='vertex'>
+              <normal_map>__default__</normal_map>
+            </shader>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+            <specular>0.01 0.01 0.01 1</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+          <transparency>0</transparency>
+          <cast_shadows>1</cast_shadows>
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder radius="0.001" length="0.37"/>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+      </link>
+      
+      <link name='link_2_clone_1'>
+        <inertial>
+          <mass value="0.001"/>
+          <inertia
+            ixx="1.141e-05" ixy="0" ixz="0"
+            iyy="1.141e-05" iyz="0"
+            izz="0"/>
+        </inertial>
+        <visual name='visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder radius="0.001" length="0.37"/>
+          </geometry>
+          <material>
+            <lighting>1</lighting>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+            <shader type='vertex'>
+              <normal_map>__default__</normal_map>
+            </shader>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+            <specular>0.01 0.01 0.01 1</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+          <transparency>0</transparency>
+          <cast_shadows>1</cast_shadows>
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder radius="0.001" length="0.37"/>
+          </geometry>
+        </collision>
+      </link>
+
+    <link name="jetson"> <!-- -0.460897 0.279682 0.215023  -->
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package:///purebot/meshes/Jetson_Xavier_NX_DevKit_LQ.stl" scale="0.000999 0.000999 0.000999"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package:///purebot/meshes/Jetson_Xavier_NX_DevKit_LQ.stl" scale="0.000999 0.000999 0.000999"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+            <mass value="0.1"/>
+            <inertia
+              ixx="0.00166667" ixy="0" ixz="0"
+              iyy="0.00166667" iyz="0"
+              izz="0.00166667"/>
+        </inertial>
+    </link>
+
+
+<!--    <transmission name="tran1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="pole_arms_joint">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor1">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+  </transmission> -->
+
+    <!-- Include Gazebo File -->
+    <xacro:include filename="$(find purebot)/urdf/purebot.gazebo.xacro" />
+
+    <!-- D435i Camera-->
+    <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro"/>
+    <xacro:sensor_d435i parent="base_link" name="D435i_camera" use_nominal_extrinsics="True">
+        <origin xyz="0.15 0.0 0.37" rpy="0.0 0.0 0.0"/>
+    </xacro:sensor_d435i> -->
+
+</robot>
+

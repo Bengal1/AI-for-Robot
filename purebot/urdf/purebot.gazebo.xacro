@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">>
+
+<!-- Planar Move Plugin -->
+    <gazebo>
+        <plugin name="robot_controller" filename="libgazebo_ros_planar_move.so">
+            <commandTopic>cmd_vel</commandTopic>
+            <odometryTopic>robot_controller/odom</odometryTopic>
+            <odometryFrame>odom</odometryFrame>
+            <odometryRate>30</odometryRate>
+            <robotBaseFrame>base_footprint</robotBaseFrame>
+        </plugin>
+    </gazebo>
+
+<!--    <gazebo>
+        <plugin name="nexus_ros_force_based_move" filename="libnexus_ros_force_based_move.so">
+            <commandTopic>cmd_vel</commandTopic>
+            <odometryTopic>odom</odometryTopic>
+            <odometryFrame>odom</odometryFrame>
+            <odometryRate>30.0</odometryRate>
+            <robotBaseFrame>base_footprint</robotBaseFrame>
+            <cmdVelTimeOut>0.5</cmdVelTimeOut>
+            <publishOdometryTf>1</publishOdometryTf>
+            <yaw_velocity_p_gain>1.0</yaw_velocity_p_gain>
+            <x_velocity_p_gain>15.0</x_velocity_p_gain>
+            <y_velocity_p_gain>15.0</y_velocity_p_gain>
+            <max_x_velocity>0.6</max_x_velocity>
+            <max_y_velocity>0.1</max_y_velocity>
+            <max_yaw_velocity>0.6</max_yaw_velocity> 
+        </plugin>
+  </gazebo> -->
+
+<!--    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/purebot</robotNamespace>
+        </plugin>
+    </gazebo> -->
+
+  <!-- All links Gazebo Properties -->
+    <gazebo reference="base_link">
+        <material>Gazebo/Orange</material>
+        <gravity>true</gravity>
+    </gazebo>
+
+    <gazebo reference="pole_link">
+        <material>Gazebo/Yellow</material>
+    </gazebo>
+
+    <gazebo reference="arms_link">
+        <material>Gazebo/Yellow</material>
+    </gazebo>
+
+    <gazebo reference="upper_left_wheel_shaft">
+        <material>Gazebo/Black</material>
+        <gravity>true</gravity>
+    </gazebo>  
+
+    <gazebo reference="lower_left_wheel_shaft">
+        <material>Gazebo/Black</material>
+        <gravity>true</gravity>
+    </gazebo>  
+
+    <gazebo reference="upper_right_wheel_shaft">
+        <material>Gazebo/Black</material>
+        <gravity>true</gravity>
+    </gazebo>  
+
+    <gazebo reference="lower_right_wheel_shaft">
+        <material>Gazebo/Black</material>
+        <gravity>true</gravity>
+    </gazebo>  
+
+    <!-- Wheel friction  -->
+    <gazebo reference="upper_left_wheel">
+        <material>Gazebo/Grey</material>
+        <gravity>true</gravity>
+        <mu1>0.6</mu1>
+        <mu2>0.6</mu2>
+    </gazebo>
+
+    <gazebo reference="lower_left_wheel">
+        <material>Gazebo/Grey</material>
+        <gravity>true</gravity>
+        <mu1>0.6</mu1>
+        <mu2>0.6</mu2>
+    </gazebo>
+
+    <gazebo reference="upper_right_wheel">
+        <material>Gazebo/Grey</material>
+        <gravity>true</gravity>
+        <mu1>0.6</mu1>
+        <mu2>0.6</mu2>
+    </gazebo>
+
+    <gazebo reference="lower_right_wheel">
+        <material>Gazebo/Grey</material>
+        <gravity>true</gravity>
+        <mu1>0.6</mu1>
+        <mu2>0.6</mu2>
+    </gazebo>
+
+</robot>
+

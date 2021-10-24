@@ -1,0 +1,36 @@
+<!-- move base -->
+<launch>
+  <master auto="start"/>
+
+  <arg name="namespace"/>
+
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen">
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" /> -->
+    <param name="footprint_padding" value="0.01" />
+    <param name="controller_frequency" value="3.0" />
+    <param name="controller_patience" value="3.0" />
+    <param name="oscillation_timeout" value="20.0" />
+    <param name="oscillation_distance" value="0.7" />
+<!--    <param name="planner_frequency" value="0.2"/> -->
+    <param name="planner_patience" value="1" />
+    <param name="controller_patience" value="1" /> 
+    <param name="recovery_behavior_enabled" value="false" />
+    <rosparam file="$(find purebot)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find purebot)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find purebot)/param/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find purebot)/param/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find purebot)/param/dwa_local_planner_params.yaml" command="load" />
+<!-->    <rosparam file="$(find purebot)/param/move_base_params.yaml" command="load" /> -->
+    <param name="global_costmap/global_frame" value="map"/>
+    <param name="global_costmap/robot_base_frame" value="base_link"/>
+    <param name="global_costmap/laser_scan_sensor/sensor_frame" value="camera_depth_frame"/>
+    <param name="global_costmap/laser_scan_sensor/topic" value="/base_scan"/>    
+    <param name="local_costmap/global_frame" value="odom"/>
+    <param name="local_costmap/robot_base_frame" value="base_link"/>
+    <param name="local_costmap/laser_scan_sensor/sensor_frame" value="camera_depth_frame"/>
+    <param name="local_costmap/laser_scan_sensor/topic" value="/base_scan"/>
+    <param name="local_costmap/obstacle_layer/laser_scan_sensor/topic" value="/base_scan"/>
+  </node>
+
+</launch>

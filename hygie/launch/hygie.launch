@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="offline"          default="false"/>
+    <!-- Launch camera node -->
+    <include unless="$(arg offline)" 
+        file="$(find realsense2_camera)/launch/rs_camera.launch">
+        <arg name="align_depth" value="true"/>
+        <arg name="linear_accel_cov" value="1.0"/>
+        <arg name="unite_imu_method" value="linear_interpolation"/>
+    </include>
+    <!-- Launch IMU filter node -->
+    <node pkg="imu_filter_madgwick" type="imu_filter_node" name="ImuFilter">
+        <param name="use_mag" type="bool" value="false" />
+        <param name="_publish_tf" type="bool" value="true" />
+        <param name="_world_frame" type="string" value="enu" />
+        <remap from="/imu/data_raw" to="/camera/imu"/>
+    </node>
+    
+    <!-- SLAM -->
+    <!-- RTAB-Map -->
+    <include file="$(find hygie)/launch/rtabmap_hygie.launch"/> -->
+    <!-- Gmapping -
+    <include file="$(find hygie)/launch/gmapping_hygie.launch"/> -->
+    <!--move_base-
+    <include file="$(find hygie)/launch/move_base_hygie.launch"/> -->
+    <!-- RRT Navigation Algorithm 
+    <include file="$(find hygie)/launch/rrt_exploration.launch"/>-->
+    <!-- Launch Rviz -->
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find hygie)/rviz/hygie_config.rviz" />-->
+</launch>
