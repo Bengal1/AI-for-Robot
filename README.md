@@ -32,5 +32,6 @@ panth planner and worlds
 ```shell
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src/
+git clone
 ```
 Common errors here : [COMMON ERRORS](https://github.com/edoardottt/READMENATOR/blob/master/COMMON_ERRORS.md)
