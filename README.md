@@ -67,7 +67,9 @@ This project Implements RTAB-Map as well as Gmapping. I have found it to improve
 We have found that combining RTAB-Map and Gmapping provides better 2D map then only RTAB-Map and do not eopardise the 3D mapping of the RTAB-Map which it excel at.
 You may see the differance on the Real environment mapping and on simulation mapping:
 #### Simulation Mapping
+![image](https://user-images.githubusercontent.com/34989887/138611701-9e079077-a8c5-4db5-8d57-673bbdc8acb0.png)
 
 #### Real Environment Mapping
+![image](https://user-images.githubusercontent.com/34989887/138611711-fffd7097-48a7-4b45-b6d0-e486dc7aee8a.png)
 
 
