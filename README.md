@@ -5,19 +5,21 @@ The project is Implemented with ROS and have some improvement to be done.
 
 this project Implements RTAB-Map as well as Gmapping. I have found it to improve 2D mapping. the 2D mappinimg of RTAB-Map only is quite noisy and It make it difficult for the robot to navigate in the environment.
 
-
-tell about hygie and purebot
-
-Related Publications:
-
 maybe something about corona virus
 
-project description and creduts for using ready packages with links.
+tell about hygie and purebot
 
 ### Hardware requierments:
 1. single-board computers (SBC) - Nvidia Jetson, Raspberry Pi et cetera.
 2. ***Camera***
 3. Robot for implementation (optional).
+
+## Related Publications:
+
+
+
+
+
 
 ## Installation Instructions
 1. Install ROS - [ROS Installation Instructions](http://wiki.ros.org/melodic/Installation/Ubuntu)
@@ -49,7 +51,10 @@ sudo apt-get install python-scikits-learn
 
 6. Clone this repository:
 ```shell
+cd ~/catkin_ws/src/
 git clone https://github.com/Bengal1/AI-for-Robot.git
+cd ..
+catkin_make
 ```
 
 *. (Optional) RRT_Exploration Package - 
