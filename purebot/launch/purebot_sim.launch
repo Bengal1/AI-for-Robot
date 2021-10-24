@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="use_sim_time" default="true" />
+    <arg name="gui"          default="true" />
+    <arg name="headless"     default="false" />
+    <arg name="world_name"   default="$(find purebot)/worlds/sim2.world"/> -->
+    <arg name="debug"        default="false" />
+    <arg name="pause"        default="false"/>
+<!--
+    <arg name="x_pose" default="0"/>
+    <arg name="y_pose" default="0"/>
+    <arg name="z_pose" default="0"/>
+    <arg name="roll_pose" default="0"/>
+    <arg name="pitch_pose" default="0"/>
+    <arg name="yaw_pose" default="-1.57079633"/>
+-->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="debug"        value="$(arg debug)" />
+        <arg name="gui"          value="$(arg gui)" />
+        <arg name="use_sim_time" value="$(arg use_sim_time)" />
+        <arg name="headless"     value="$(arg headless)" />
+        <arg name="world_name"   value="$(arg world_name)" /> -->
+        <arg name="paused"       value="$(arg pause)"/>
+    </include>
+
+    <!-- Load robot description -->
+    <include file="$(find purebot)/launch/purebot_description.launch" />
+
+    <!-- Spawn the robot -->
+    <node name="purebot_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" args="-urdf -model purebot -param robot_description -Y -1.57079633" />
+
+    <!-- SLAM -->
+    <include file="$(find purebot)/launch/SLAM_purebot.launch"/>
+
+    <!-- RRT Navigation Algorithm 
+    <include file="$(find purebot)/launch/rrt_purebot.launch"/>-->
+</launch>
