@@ -3,19 +3,17 @@ This is the final project of my B.sc in Elecrical engineering at Tel-Aviv Univer
 This project is part of a large project - Robot that purify airplane's cabin from viruses.
 The project is Implemented with ROS and have some improvement to be done.
 
-this project Implements RTAB-Map as well as Gmapping. I have found it to improve 2D mapping. the 2D mappinimg of RTAB-Map only is quite noisy and It make it difficult for the robot to navigate in the environment.
-
 maybe something about corona virus
 
-this package contains to the robot SLAM application and also the robot simulation.
+This package contains to the robot SLAM application and also the robot simulation.
 #### Hygie - Real Robot SLAM
-after installing if you will choose to udse thr real SLAM application, it's all in the Hygie folder.
-##### Hardware requierments:
+After installing if you will choose to udse thr real SLAM application, it's all in the Hygie folder.
+**Hardware requierments:
 1. single-board computers (SBC) - Nvidia Jetson Xavier NX or equivalent SBC.
 2. RGB-D Camera with IMU - Intel RealSense D435i or equivalent combination. 
 3. Robot for implementation (optional).
 #### Purebot - Robot Ready Simulation
-the purebot folder contains all the necessaries for simulating our robot. 
+The purebot folder contains all the necessaries for simulating our robot. 
 ## Related Publications:
 
 
@@ -51,7 +49,9 @@ sudo apt-get install python-scikits-learn
 ```
   For more Information go to [SLAM Gmapping](http://wiki.ros.org/slam_gmapping)
 
-6. Clone this repository:
+6. Install [Depth image to Laser scan converter](http://wiki.ros.org/depthimage_to_laserscan)
+
+7. Clone this repository:
 ```shell
 cd ~/catkin_ws/src/
 git clone https://github.com/Bengal1/AI-for-Robot.git
@@ -61,9 +61,7 @@ catkin_make
 
 * (Optional) [RRT_Exploration](https://github.com/hasauino/rrt_exploration) Package.
 
-### Requirement:
+## The Project:
+This project Implements RTAB-Map as well as Gmapping. I have found it to improve 2D mapping. the 2D mappinimg of RTAB-Map only is quite noisy and It make it difficult for the robot to navigate in the environment.
+### RTAB-Map vs RTAB-Map+Gmapping
 
-
-
-```
-Common errors here : [COMMON ERRORS](https://github.com/edoardottt/READMENATOR/blob/master/COMMON_ERRORS.md)
