@@ -45,9 +45,8 @@ sudo apt-get install python-scikits-learn
   For more Information go to [SLAM Gmapping](http://wiki.ros.org/slam_gmapping)
 6. Clone this repository:
 ```shell
-git clone
+git clone https://github.com/Bengal1/AI-for-Robot.git
 ```
-
 *. (Optional) RRT_Exploration Package - 
 
 ### Requirement:
