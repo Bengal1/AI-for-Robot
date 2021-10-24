@@ -7,9 +7,11 @@ this project Implements RTAB-Map as well as Gmapping. I have found it to improve
 
 maybe something about corona virus
 
-tell about hygie and purebot
+this package contains to the robot SLAM application and also the robot simulation.
+#### Hygie - Real Robot SLAM
+after installing if you will choose to udse thr real SLAM application
 
-### Hardware requierments:
+##### Hardware requierments:
 1. single-board computers (SBC) - Nvidia Jetson, Raspberry Pi et cetera.
 2. ***Camera***
 3. Robot for implementation (optional).
