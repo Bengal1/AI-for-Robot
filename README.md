@@ -15,11 +15,10 @@ After installing if you will choose to udse thr real SLAM application, it's all 
 #### Purebot - Robot Ready Simulation
 The purebot folder contains all the necessaries for simulating our robot. 
 ## Related Publications:
-
-
-
-
-
+[1] Guillaume Bresson, Zayed Alsayed, Li Yu, Sébastien Glaser. Simultaneous Localization and Mapping: A Survey of Current Trends in Autonomous Driving. IEEE Transactions on Intelligent Vehicles,Institute of Electrical and Electronics Engineers, 2017, XX, pp.1. 10.1109/TIV.2017.2749181. hal-01615897.
+[2] Giorgio Grisetti, Cyrill Stachniss, Wolfram Burgard, "Improving Grid-based SLAM with Rao-Blackwellized Particle Filters by Adaptive Proposals and Selective Resampling".
+[3] Eric A. Wan and Rudolph van der Merwe, " The Unscented Kalman Filter for Nonlinear Estimation", Oregon Graduate Institute of Science & Technology 20000 NW Walker Rd, Beaverton, Oregon 97006.
+[4] Dieter Foxy Wolfram Burgardy Sebastian Thrun, "The Dynamic Window Approach to Collision Avoidance", Dept. of Computer Science III, University of Bonn, D-53117 Bonn, Germany, Dept. of Computer Science, Carnegie Mellon University, Pittsburgh, P A 15213
 
 ## Installation Instructions
 1. Install ROS - [ROS Installation Instructions](http://wiki.ros.org/melodic/Installation/Ubuntu)
