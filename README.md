@@ -9,13 +9,13 @@ maybe something about corona virus
 
 this package contains to the robot SLAM application and also the robot simulation.
 #### Hygie - Real Robot SLAM
-after installing if you will choose to udse thr real SLAM application
-
+after installing if you will choose to udse thr real SLAM application, it's all in the Hygie folder.
 ##### Hardware requierments:
-1. single-board computers (SBC) - Nvidia Jetson, Raspberry Pi et cetera.
-2. ***Camera***
+1. single-board computers (SBC) - Nvidia Jetson Xavier NX or equivalent SBC.
+2. RGB-D Camera with IMU - Intel RealSense D435i or equivalent combination. 
 3. Robot for implementation (optional).
-
+#### Purebot - Robot Ready Simulation
+the purebot folder contains all the necessaries for simulating our robot. 
 ## Related Publications:
 
 
