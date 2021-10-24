@@ -64,4 +64,10 @@ catkin_make
 ## The Project:
 This project Implements RTAB-Map as well as Gmapping. I have found it to improve 2D mapping. the 2D mappinimg of RTAB-Map only is quite noisy and It make it difficult for the robot to navigate in the environment.
 ### RTAB-Map vs RTAB-Map+Gmapping
+We have found that combining RTAB-Map and Gmapping provides better 2D map then only RTAB-Map and do not eopardise the 3D mapping of the RTAB-Map which it excel at.
+You may see the differance on the Real environment mapping and on simulation mapping:
+#### Simulation Mapping
+
+#### Real Environment Mapping
+
 
