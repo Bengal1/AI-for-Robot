@@ -1,5 +1,5 @@
 # AI-for-Robot
-This is the final project of my B.sc in Elecrical engineering at Tel-Aviv University.
+This is the final project of my B.sc in Elecrical engineering at [Tel-Aviv University](https://english.tau.ac.il/).
 This project is part of a large project - Robot that purify airplane's cabin from viruses.
 The project is Implemented with ROS and have some improvement to be done.
 
@@ -14,6 +14,10 @@ After installing if you will choose to udse thr real SLAM application, it's all 
 3. Robot for implementation (optional).
 #### Purebot - Robot Ready Simulation
 The purebot folder contains all the necessaries for simulating our robot. 
+![pbot3](https://user-images.githubusercontent.com/34989887/138612682-eb2202cd-2593-4f0e-9902-42c3b00729ec.png)
+![pbot5](https://user-images.githubusercontent.com/34989887/138612684-d444c91d-0be5-4604-979c-764922b9471d.png)
+![pbot](https://user-images.githubusercontent.com/34989887/138612685-0de1a7f8-7b38-4606-a113-9617c80e39a2.png)
+
 ## Related Publications:
 [1] Guillaume Bresson, Zayed Alsayed, Li Yu, Sébastien Glaser. Simultaneous Localization and Mapping: A Survey of Current Trends in Autonomous Driving. IEEE Transactions on Intelligent Vehicles,Institute of Electrical and Electronics Engineers, 2017, XX, pp.1. 10.1109/TIV.2017.2749181. hal-01615897.
 
