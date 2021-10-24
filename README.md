@@ -21,11 +21,11 @@ project description and creduts for using ready packages with links.
 
 ## Installation Instructions
 
-1. Install ROS - [ROS Installation Instructions] (http://wiki.ros.org/melodic/Installation/Ubuntu)
+1. Install ROS - [ROS Installation Instructions](http://wiki.ros.org/melodic/Installation/Ubuntu)
 2. Install ROS Navigation Package.
 
 3. Install Realsense Library for ROS.
-  installation of Intel realsense on Nvidia Jetson: * Jetson users - use the [Jetson Installation Guide]   (https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_jetson.md)
+  Installation of Intel realsense on Nvidia Jetson:[Jetson Installation Guide](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_jetson.md)
   
   For more information go to [RealSense](https://github.com/mahammadirfan/SLAM-using-intelrealsense-d435i)
   
