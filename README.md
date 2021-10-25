@@ -39,7 +39,7 @@ sudo apt-get install ros-melodic-navigation
 
 3. Install Realsense Library for ROS.
   
-  * Installation of Intel realsense on Nvidia Jetson:[Jetson Installation Guide](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_jetson.md)
+  * Installation of Intel realsense on Nvidia Jetson: [Jetson Installation Guide](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_jetson.md)
   
   For more information go to [RealSense](https://github.com/mahammadirfan/SLAM-using-intelrealsense-d435i)
 
