@@ -19,9 +19,9 @@
     <!-- SLAM -->
     <!-- RTAB-Map -->
     <include file="$(find hygie)/launch/rtabmap_hygie.launch"/> -->
-    <!-- Gmapping -
+    <!-- Gmapping -->
     <include file="$(find hygie)/launch/gmapping_hygie.launch"/> -->
-    <!--move_base-
+    <!--move_base-->
     <include file="$(find hygie)/launch/move_base_hygie.launch"/> -->
     <!-- RRT Navigation Algorithm 
     <include file="$(find hygie)/launch/rrt_exploration.launch"/>-->
