@@ -71,12 +71,12 @@ catkin_make
 
 * (Optional) [RRT_Exploration](https://github.com/hasauino/rrt_exploration) Package.
 
-## Activate
-Purebot
+## Activation
+Purebot:
 ```shell
 Roslaunch purbot purebot_sim.launch
 ```
-Hygie
+Hygie:
 ```shell
 Roslaunch hygie hygie.launch
 ```
