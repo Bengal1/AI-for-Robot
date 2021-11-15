@@ -3,10 +3,6 @@ This is the final project of my B.sc in Elecrical engineering at [Tel-Aviv Unive
 This project is part of a large project - Robot that purify airplane's cabin from viruses.
 The project is Implemented with ROS and have some improvement to be done.
 
-### Background & Motivation
-The coronavirus pandemic, is an ongoing global pandemic of coronavirus disease 2019 (COVID-19) caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). The novel virus was first identified in Wuhan, China, in December 2019, and it spread to other parts of mainland China and around the world. The World Health Organization (WHO) declared a Public Health Emergency of International Concern on 30 January 2020, and a pandemic on 11 March 2020. As of 3 October 2021, more than 234 million cases and 4.8 million deaths have been confirmed, making it one of the deadliest pandemics in history.
-The motivation for the project stems from the health and economic need to rehabilitate the aviation industry that has experienced huge losses in the last two years, as well as reducing the mobility of the virus. These things that affect the public health and world economy.
-
 
 This package contains to the robot SLAM application and also the robot simulation.
 #### Hygie - Real Robot SLAM
