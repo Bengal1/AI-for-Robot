@@ -16,7 +16,8 @@ After installing if you will choose to udse thr real SLAM application, it's all 
 2. RGB-D Camera with IMU - Intel RealSense D435i or equivalent combination. 
 3. Robot for implementation (optional).
 #### Purebot - Robot Ready Simulation
-The purebot folder contains all the necessaries for simulating our robot. 
+The purebot folder contains all the necessaries for simulating our robot.
+
 ![pbot](https://user-images.githubusercontent.com/34989887/138612685-0de1a7f8-7b38-4606-a113-9617c80e39a2.png)
 ![pbot5](https://user-images.githubusercontent.com/34989887/138612684-d444c91d-0be5-4604-979c-764922b9471d.png)
 ![pbot3](https://user-images.githubusercontent.com/34989887/138612682-eb2202cd-2593-4f0e-9902-42c3b00729ec.png)
